@@ -1,0 +1,26 @@
+
+.. _gfast-index:
+
+Welcome to GFAST Central's documentation
+============================================
+
+
+.. image:: _static/images/GFAST_logo.png
+   :align:   center
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   appdoc
+   gfastapps
+	
+.. include :: ../../README.rst
+   
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

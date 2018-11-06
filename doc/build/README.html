@@ -1,0 +1,558 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ManuApps &mdash; GFAST Landing Page 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> GFAST Landing Page
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">ManuApps</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a><ul>
+<li><a class="reference internal" href="#developing-your-own-website">Developing your own website</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#incorporating-manuapps-updates-into-the-fork">Incorporating ManuApps updates into the fork</a></li>
+<li><a class="reference internal" href="#pushing-your-development-back-to-manuapps">Pushing your development back to ManuApps:</a></li>
+<li><a class="reference internal" href="#editing-sidebar-collapsed-navbar-links">Editing sidebar/collapsed-navbar links:</a></li>
+<li><a class="reference internal" href="#using-flask-admin">Using Flask-Admin:</a><ul>
+<li><a class="reference internal" href="#running-on-pivotal-cloud-foundry">Running on Pivotal Cloud Foundry</a></li>
+<li><a class="reference internal" href="#connecting-to-sql">Connecting to SQL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#other-pivotal-tips">Other Pivotal tips</a></li>
+<li><a class="reference internal" href="#concourse">concourse</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GFAST Landing Page</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>ManuApps</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/README.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="manuapps">
+<h1>ManuApps<a class="headerlink" href="#manuapps" title="Permalink to this headline">¶</a></h1>
+<p>The master branch of this repository provides a GFAST standard bare-bones Flask framework.
+Fork this to begin development on Manulife web apps.</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Gitlab does not currently allow the forking of a Group project to a project within the same Group</dt>
+<dd>(<a class="reference external" href="https://gitlab.com/gitlab-org/gitlab-ce/issues/17358">https://gitlab.com/gitlab-org/gitlab-ce/issues/17358</a>). Instead<ol class="last arabic">
+<li>Fork to personal.</li>
+<li>Rename the project (in GitLab Settings).</li>
+<li>Fork back to the group.</li>
+<li>Delete the personal fork.</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li>As you work on your personal site, avoid editing the “core” javascript, css, and templates.  See the
+<cite>Developing your own website</cite> section below.</li>
+</ul>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Most likely you do not want to work on this repository directly. Instead, clone the site you are working on,
+<em>MyManuAppSite</em></p>
+<p><strong>Step 1:</strong> Clone the repository</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;git clone https://gitlab.manulife.com/GFAST/*MyManuAppSite*.git MyManuAppSite&#39;</span> <span class="n">_</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cd</span> <span class="n">MyManuAppSite</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><strong>Step 2:</strong>  Checkout to the required branch where your project is</dt>
+<dd><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">branch</span> <span class="n">checkout</span> <span class="n">DevProj</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>Step3:</strong> Create a virtual environment, activate it, install dependencies. Note, make sure you are using</dt>
+<dd><p class="first">virtualenv see <cite>https://realpython.com/blog/python/python-virtual-environments-a-primer/</cite>
+and <cite>http://stackoverflow.com/questions/29950300/what-is-the-relationship-between-virtualenv-and-pyenv</cite>
+for a brief description. If the virtualenv library is not installed the virtual environment, the venv
+that gets included will include site-packages from the system-wide location.
+From a shell within the cloned location MyManuAppSite</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="n">virtualenv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="o">.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="o">.</span>\<span class="n">Scripts</span>\<span class="n">activate</span><span class="o">.</span><span class="n">ps1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">pip</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>:: Note: This might not work because of Artifcatory or SSH authentication issues. If you get any errors inline with this
+use the following to by-pass that.</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">trusted</span><span class="o">-</span><span class="n">host</span> <span class="n">pypi</span><span class="o">.</span><span class="n">org</span> <span class="o">--</span><span class="n">trusted</span><span class="o">-</span><span class="n">host</span> <span class="n">files</span><span class="o">.</span><span class="n">pythonhosted</span><span class="o">.</span><span class="n">org</span> <span class="o">--</span><span class="n">trusted</span><span class="o">-</span><span class="n">host</span> <span class="n">pypi</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">org</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p><strong>Step4:</strong> We optionally use pywin32 for authenticating against Active Directory. If you will not be using the LDAP authentication, download the appropriate version from <a class="reference external" href="https://sourceforge.net/projects/pywin32/files/pywin32/">https://sourceforge.net/projects/pywin32/files/pywin32/</a>. Pip in a virtual environment cannot install binaries, so use easy_install. To install:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">easy_install</span> <span class="n">pywin32</span><span class="o">-</span><span class="mf">220.</span><span class="n">win</span><span class="o">-</span><span class="n">amd64</span><span class="o">-</span><span class="n">py3</span><span class="o">.</span><span class="mf">5.</span><span class="n">exe</span> <span class="p">(</span><span class="ow">or</span> <span class="n">the</span> <span class="n">appropriate</span> <span class="n">file</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Step5:</strong> Start the service</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">run</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If the environment you are working in doesn’t have internet access, do the above steps (up to 3)
+from a computer that does and run.
+&gt;&gt;&gt; mkdir dependencies
+&gt;&gt;&gt; cd dependencies
+&gt;&gt;&gt; pip install -r requirements.txt –download=”./dependencies”
+You might want to try this if you get errors.
+&gt;&gt;&gt; pip download -r requirements.txt
+Then copy those wheels, zips, and tarballs over to your working environment.</p>
+</div>
+</div></blockquote>
+</div></blockquote>
+<div class="section" id="developing-your-own-website">
+<h3>Developing your own website<a class="headerlink" href="#developing-your-own-website" title="Permalink to this headline">¶</a></h3>
+<p>You really shouldn’t be developing in the ManuApps repository. It is fairly locked down, with pull requests requiring multiple approvals.</p>
+<p>Instead, you should have forked the ManuApps repository to your own. That said, you still want to benefit from development that is
+happening within the ManuApps repository. To facilitate this, and to ease the sharing of code,
+we recommend setting up a ‘manuapps’ remote branch immediately (see step 1 below).</p>
+<p>Git accommodates many workflows, but our recommended workflow is:</p>
+</div>
+</div>
+<div class="section" id="incorporating-manuapps-updates-into-the-fork">
+<h2>Incorporating ManuApps updates into the fork<a class="headerlink" href="#incorporating-manuapps-updates-into-the-fork" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">add ManuApps as a remote repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">manuapps</span> <span class="s1">&#39;https://gitlab.manulife.com/GFAST/ManuApps.git&#39;</span> <span class="n">_</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">to update from the branchA on ManuApps to branchB in your repository (assuming they exist):</p>
+<p>** Method 1:**</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">checkout</span> <span class="n">branchB</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">fetch</span> <span class="n">manuapps</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">merge</span> <span class="n">manuapps</span><span class="o">/</span><span class="n">branchA</span>
+</pre></div>
+</div>
+<p>** Method 2:**</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">checkout</span> <span class="n">branchB</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">fetch</span> <span class="n">manuapps</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">rebase</span> <span class="n">manuapps</span><span class="o">/</span><span class="n">branchA</span>
+</pre></div>
+</div>
+<p>** Method 3:** (specific files or folders)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">fetch</span> <span class="n">manuapps</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">checkout</span> <span class="n">manuapps</span><span class="o">/</span><span class="n">master</span> <span class="o">--</span> <span class="n">folder</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">ex</span> <span class="p">(</span><span class="n">folder</span><span class="o">/</span> <span class="n">works</span> <span class="n">too</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="pushing-your-development-back-to-manuapps">
+<h2>Pushing your development back to ManuApps:<a class="headerlink" href="#pushing-your-development-back-to-manuapps" title="Permalink to this headline">¶</a></h2>
+<p>As above, set the master branch to track Manuapps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">manuapps</span> <span class="s1">&#39;https://gitlab.manulife.com/GFAST/ManuApps.git&#39;</span> <span class="n">_</span>
+</pre></div>
+</div>
+<p>You really only want to push files that have changes to the core of the website, not the site-specific changes.
+Cherry pick these changes, or merge individual files.
+Here is a good explanation ‘<a class="reference external" href="http://jasonrudolph.com/blog/2009/02/25/git-tip-how-to-merge-specific-files-from-another-branch">http://jasonrudolph.com/blog/2009/02/25/git-tip-how-to-merge-specific-files-from-another-branch</a>’ _</p>
+<p>If, for instance, you want to update the “core” file core-X</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">fetch</span> <span class="n">manuapps</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">checkout</span> <span class="n">manuapps</span><span class="o">/</span><span class="n">master</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span> <span class="n">core</span><span class="o">-</span><span class="n">X</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">commit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">push</span> <span class="n">manuapps</span>
+</pre></div>
+</div>
+<p>The code structure provides ‘static/css/gfast-sitecustom.css’ and ‘static/js/gfast-sitecustom.js’,
+and you should try and put your custom code here, not in ‘gfast.css’ or ‘gfast.js’.</p>
+<p>This stackoverflow question has some great examples of workflow with remote and local branches:
+‘<a class="reference external" href="http://stackoverflow.com/questions/11266478/git-add-remote-branch">http://stackoverflow.com/questions/11266478/git-add-remote-branch</a>’ _</p>
+<p>Creating a remote called “my_remote”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">my_remote</span> <span class="s1">&#39;git://github.com/jdoe/coolapp.git&#39;</span> <span class="n">_</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">fetch</span> <span class="n">my_remote</span>
+</pre></div>
+</div>
+<p>List all remote branches:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">r</span>
+</pre></div>
+</div>
+<p>Create a new local branch (test) from a my_remote remote branch (pu):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">branch</span> <span class="n">test</span> <span class="n">my_remote</span><span class="o">/</span><span class="n">pu</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">checkout</span> <span class="n">test</span>
+</pre></div>
+</div>
+<p>Merge changes from my_remote’s remote branch (pu) with local branch (test):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">fetch</span> <span class="n">my_remote</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">checkout</span> <span class="n">test</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">merge</span> <span class="n">my_remote</span><span class="o">/</span><span class="n">pu</span>
+</pre></div>
+</div>
+<p>Update my_remote’s remote branch (pu) from a local branch (test):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">push</span> <span class="n">my_remote</span> <span class="n">test</span><span class="p">:</span><span class="n">pu</span>
+</pre></div>
+</div>
+<p>Creating a new branch on a remote uses the same syntax as updating a remote branch. For example, create new remote branch (beta) on my_remote from local branch (test):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">push</span> <span class="n">my_remote</span> <span class="n">test</span><span class="p">:</span><span class="n">beta</span>
+</pre></div>
+</div>
+<p>Delete remote branch (pu) from my_remote:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">push</span> <span class="n">my_remote</span> <span class="p">:</span><span class="n">pu</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="editing-sidebar-collapsed-navbar-links">
+<h2>Editing sidebar/collapsed-navbar links:<a class="headerlink" href="#editing-sidebar-collapsed-navbar-links" title="Permalink to this headline">¶</a></h2>
+<p>Your sidebar links automatically shift into the navbar dropdown menu when the browser becomes narrow. Because this requires populating more than one template with the same set of links, we store the links in a list called SIDEBAR_LINKS in config.py. Before each request, SIDEBAR_LINKS is copied to g.sidebar_links. If anything needs to be dynamically added, do so after this step in before_request(). Each entry in SIDEBAR_LINKS is a dictionary with the following entries:</p>
+<ul class="simple">
+<li><strong>label</strong> <em>(string)</em>: The link text, what appears between the &lt;a&gt;&lt;/a&gt; tags.</li>
+<li><strong>href</strong> <em>(string)</em>: The link destination, what appears after href=, or in url_for().</li>
+<li><strong>is_view_name</strong> <em>(boolean)</em>: False if href is a URL (absolute or relative), True if href is a view name that should be expanded with url_for().</li>
+<li><strong>nested</strong> <em>(list)</em>: Empty list if there are no links nested below this one, otherwise a list of dictionaries structured exactly like this one (but without a ‘nested’ entry).</li>
+</ul>
+</div>
+<div class="section" id="using-flask-admin">
+<h2>Using Flask-Admin:<a class="headerlink" href="#using-flask-admin" title="Permalink to this headline">¶</a></h2>
+<p>To simplify managing your database models, Flask-Admin is included. This automatically generates an /admin view allowing you to see and edit the content of your database. Note, however, that unless you add special security to handle admin access in production, <strong>you should set CREATE_ADMIN_VIEWS to False in config.py before pushing to production</strong>.</p>
+<p>The basic process is simple. For each model (eg, User, ModelName) defined in models.py, add an admin.add_view line in views.py:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Add admin ModelViews here --- #</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">add_view</span><span class="p">(</span><span class="n">MyModelView</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">))</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">add_view</span><span class="p">(</span><span class="n">MyModelView</span><span class="p">(</span><span class="n">ModelName</span><span class="p">,</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">))</span>
+<span class="c1"># --------------------------------- #</span>
+</pre></div>
+</div>
+<p>These will then be accessible via /admin in your application. You can also edit templates/admin/index.html to change the content of the base /admin page.</p>
+<p>Lots of information on how to customize the admin views, including limiting which model fields can be seen or edited, can be found at <a class="reference external" href="http://flask-admin.readthedocs.io/en/latest/">http://flask-admin.readthedocs.io/en/latest/</a>.</p>
+<div class="section" id="running-on-pivotal-cloud-foundry">
+<h3>Running on Pivotal Cloud Foundry<a class="headerlink" href="#running-on-pivotal-cloud-foundry" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>GSD maintains a quick guide to PCF/Git within MFC (including setting sslVerify to false):
+<a class="reference external" href="https://gitlab.manulife.com/DevOpsTechInfo/help-pcf">https://gitlab.manulife.com/DevOpsTechInfo/help-pcf</a>
+<a class="reference external" href="https://gitlab.manulife.com/DevOpsTechInfo/help-git">https://gitlab.manulife.com/DevOpsTechInfo/help-git</a></li>
+</ul>
+<p>Follow the 15 minute guide here:
+* <a class="reference external" href="https://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry/deploy-the-sample-app">https://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry/deploy-the-sample-app</a></p>
+<p>run the CF installer, in the included zip. This install the commandline tools needed to interact with PCF.</p>
+<p>MFC’s PCF portal is found here:</p>
+<ul>
+<li><p class="first"><a class="reference external" href="https://login.sys.dev.gsdcf.manulife.com/login">https://login.sys.dev.gsdcf.manulife.com/login</a></p>
+<p>MFC’s login endpoint for PCF has changed recently to
+<a class="reference external" href="https://api.sys.dev.gsdcf.manulife.com">https://api.sys.dev.gsdcf.manulife.com</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cf</span> <span class="n">login</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">sys</span><span class="o">.</span><span class="n">cac</span><span class="o">.</span><span class="n">preview</span><span class="o">.</span><span class="n">pcf</span><span class="o">.</span><span class="n">manulife</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+</div>
+<p>GFAST development is done in org is ‘GSD-CAC-DEV’, Space ‘GFAST-CAC-DEV’</p>
+<p>The full login command is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cf</span> <span class="n">login</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">sys</span><span class="o">.</span><span class="n">cac</span><span class="o">.</span><span class="n">preview</span><span class="o">.</span><span class="n">pcf</span><span class="o">.</span><span class="n">manulife</span><span class="o">.</span><span class="n">com</span> <span class="o">-</span><span class="n">u</span> <span class="o">&lt;</span><span class="n">lan</span> <span class="nb">id</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">password</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">o</span> <span class="n">GSD</span><span class="o">-</span><span class="n">CAC</span><span class="o">-</span><span class="n">DEV</span> <span class="o">-</span><span class="n">s</span> <span class="n">GFAST</span><span class="o">-</span><span class="n">CAC</span><span class="o">-</span><span class="n">DEV</span>
+</pre></div>
+</div>
+<p>You can check which ORGS/Spaces you have access to by logging in the Pivotal Application Manager <cite>https://login.sys.cac.preview.pcf.manulife.com/login</cite></p>
+</li>
+<li><p class="first">edit the manifest.yml, changing the name of the application</p>
+</li>
+<li><p class="first">On first run, create the database. Note, we had issues installing pyodbc (requires unixodbc driver),
+so we switched to the python-conda buildpack instead of the default python (pip-based) one
+(this hasn’t helped either: <a class="reference external" href="https://github.com/cloudfoundry/python-buildpack/issues/34">https://github.com/cloudfoundry/python-buildpack/issues/34</a>)</p>
+<p>cf push manuapps -c “python db_create.py” -b <a class="reference external" href="https://github.com/ihuston/python-conda-buildpack.git">https://github.com/ihuston/python-conda-buildpack.git</a>
+cf push manuapps -b <a class="reference external" href="https://github.com/ihuston/python-conda-buildpack.git">https://github.com/ihuston/python-conda-buildpack.git</a></p>
+</li>
+<li><p class="first">To migrate your project into the production PCF area, you need to set up a concourse pipeline. This process is defined here:
+<a class="reference external" href="https://gitlab.manulife.com/geesoffice/onboarding-template">https://gitlab.manulife.com/geesoffice/onboarding-template</a></p>
+<p>Once you fill in these templates/forms, then email the GSD engineering team.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="connecting-to-sql">
+<h3>Connecting to SQL<a class="headerlink" href="#connecting-to-sql" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://gitlab.manulife.com/GEES/azure-service-broker/tree/master/azure-sql-db">https://gitlab.manulife.com/GEES/azure-service-broker/tree/master/azure-sql-db</a></p>
+<ul>
+<li><p class="first">List available services:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cf</span> <span class="n">marketplace</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Create a service instance, I’ll leverage azure-sqldb. Copy the template SQL config file, adjust the password:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">CF_sqldb_nonprod_eastus</span><span class="o">.</span><span class="n">json</span><span class="o">.</span><span class="n">template</span> <span class="n">CF_sqldb_nonprod_eastus</span><span class="o">.</span><span class="n">json</span>
+<span class="n">cf</span> <span class="n">create</span><span class="o">-</span><span class="n">service</span> <span class="n">azure</span><span class="o">-</span><span class="n">sqldb</span> <span class="n">basic</span> <span class="n">azuresqldb</span> <span class="o">-</span><span class="n">c</span> <span class="n">CF_sqldb_nonprod_eastus</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>** Note:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">could</span> <span class="ow">not</span> <span class="n">get</span> <span class="n">Python</span> <span class="n">to</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">SQL</span> <span class="n">server</span> <span class="n">when</span> <span class="n">deploying</span> <span class="n">on</span> <span class="n">linux</span> <span class="n">nodes</span><span class="o">.</span> <span class="n">There</span> <span class="n">were</span> <span class="n">issues</span> <span class="n">compiling</span> <span class="n">pyodbc</span> <span class="n">on</span> <span class="n">linux</span><span class="p">,</span> <span class="n">Cloud</span> <span class="n">Foundry</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">provide</span> <span class="n">the</span> <span class="n">unixodbc</span> <span class="n">driver</span><span class="o">.</span>
+</pre></div>
+</div>
+<p># Bind the service to the app</p>
+<blockquote>
+<div>cf bind-service manuapps azuresqldb
+cf restage manuapps</div></blockquote>
+<p># you can see the SQL credentials by typing</p>
+<blockquote>
+<div>cf env manuapps</div></blockquote>
+<ul>
+<li><p class="first">use mysql instead:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cf</span> <span class="n">create</span><span class="o">-</span><span class="n">service</span> <span class="n">p</span><span class="o">-</span><span class="n">mysql</span> <span class="mi">5</span><span class="n">GB</span><span class="o">-</span><span class="n">dev</span> <span class="n">mysqldb</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cf</span> <span class="n">bind</span><span class="o">-</span><span class="n">service</span> <span class="n">manuapps</span> <span class="n">mysqldb</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p># adjust the database parameters in config.py, use ‘cf env manuapps’ to find the credentials</p>
+<blockquote>
+<div><ul>
+<li><p class="first">change USE_SQLITE = False</p>
+</li>
+<li><dl class="first docutils">
+<dt>fill in the server, port, database, uid, pwd, as listed by ‘cf env manuapps’</dt>
+<dd><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cf</span> <span class="n">push</span> <span class="n">manuapps</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;python db_create.py&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cf</span> <span class="n">push</span> <span class="n">manuapps</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="other-pivotal-tips">
+<h2>Other Pivotal tips<a class="headerlink" href="#other-pivotal-tips" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>delete a route
+&gt;&gt;&gt; cf routes
+&gt;&gt;&gt; cf delete-route apps.dev.gsdcf.manulife.com –hostname X</li>
+</ul>
+</div>
+<div class="section" id="concourse">
+<h2>concourse<a class="headerlink" href="#concourse" title="Permalink to this headline">¶</a></h2>
+<p>Concourse is Pivotal’s continuous integration tool.
+The provisioning pipeline is defined in the ‘concourse’ subfolder.</p>
+<p>Note: Currently missing development branch</p>
+<ul class="simple">
+<li>Edit the <em>concourse-credentials.yml</em> file in the concourse subfolder.
+Specifically, change the <em>private key</em> (be sure to upload the public key
+to gitlab), change the <em>git_uri</em> to your repository, and adjust <em>app_name</em>.</li>
+</ul>
+<p>We have created a GFAST deploy key, stored the private key in cyberark
+(as well as the credentials file). See
+<cite>https://mlisgciscybws1.americas.manulife.net/PasswordVault/logon.aspx?ReturnUrl=%2fPasswordVault%2fdefault.aspx</cite>
+for cyberark login. See <cite>https://gitlab.manulife.com/help/ssh/README</cite>
+for a description of Deploy Keys. You should be able to leverage this key
+across all GFAST web apps. Select Deploy Keys in your project’s settings
+and enable the GFASTConcourse key.</p>
+<p>To provision within the DEV foundation, log in and set your target (Note, these
+steps are in the ‘concourse/nonprod/updatePipeline.sh’ file, but I prefer
+to run these commands explicitly). Logging in should only need to be done once
+(u: admin, p: G$dc0ncourse).</p>
+<blockquote>
+<div>fly –target manulife-ci login –concourse-url <a class="reference external" href="https://concourse.sys.dev.gsdcf.manulife.com">https://concourse.sys.dev.gsdcf.manulife.com</a> –insecure</div></blockquote>
+<p>Adjust manuapps to your application’s name (edit and run updatePipeline.sh, or type the commands directly):</p>
+<blockquote>
+<div><p>fly -t manulife-ci set-pipeline -c pipeline.yml -p manuapps-poc-dev-ci –var app_name=manuapps-poc-dev-ci -n -l ../concourse-credentials.yml</p>
+<p>fly -t manulife-ci unpause-pipeline -p manuapps-poc-dev-ci</p>
+</div></blockquote>
+<p>You can see your pipeline by surfing to <cite>gfast pipeline &lt;http://concourse.sys.dev.gsdcf.manulife.com&gt;</cite> _
+For now, log in the “main” team and use the admin credentials listed above.</p>
+<p>Get the list of available docker images</p>
+<p>curl <a class="reference external" href="https://10.234.24.211/v2/_catalog">https://10.234.24.211/v2/_catalog</a> -k</p>
+<p>testing on dev:
+edit updatePipeline.sh set</p>
+<p>update concourse-credentials.yml</p>
+<p>fly targets
+<a class="reference external" href="https://concourse.ci/fly-login.html">https://concourse.ci/fly-login.html</a>
+fly -t manulife-ci login -c <a class="reference external" href="https://concourse.sys.dev.gsdcf.manulife.com">https://concourse.sys.dev.gsdcf.manulife.com</a>
+username: admin
+password: G$dc0ncourse</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, GFAST.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
