@@ -1,0 +1,13 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1>We could not find {{ page }}</h1>
+<p>
+  May we recommend <a href="{{ this_link }}"> this site</a> for some lite reading.
+</p>
+
+<p>
+  Or go <a href="{{ url_for('index') }}">Back</a>
+</p>
+{% endblock %}
