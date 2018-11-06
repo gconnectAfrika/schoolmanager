@@ -16,15 +16,11 @@ app = MyFlask(__name__)
 
 ## Assets: Bundle dependencies for speed
 assets = Environment(app)
-js = Bundle("js/jquery-3.1.1.min.js",
-            "bootstrap-3.3.7/js/bootstrap.js",
-            "js/gfast-core.js",
-            "js/gfast-sitecustom.js")
+js = Bundle("bootstrap-4.1.3-dist/js/bootstrap.min.js")
 assets.register("js_core", js)
 
-css = Bundle("bootstrap-3.3.7/css/bootstrap.css",
-             "css/gfast-core.css",
-             "css/gfast-sitecustom.css")
+css = Bundle("bootstrap-4.1.3-dist/css/bootstrap.min.css",
+             "css/style.css")
 assets.register("css_core", css)
 
 ## rendering

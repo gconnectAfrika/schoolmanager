@@ -18,15 +18,14 @@ from flask import flash, g, jsonify, render_template, request, session, send_fro
 
 from app import app
 
-# @app.route("/")
-# @app.route("/index/")
-# # def index():
-
-    # # return render_template('main.html')
-
 @app.route("/")
-def home():
-    return "Hello, World!"
+@app.route("/index/")
+def index():
+    return render_template('base.html')
+
+#@app.route("/")
+#def home():
+#    return "Hello, Genius Connect!"
 	
 	
 # @app.route('/')

@@ -9,10 +9,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="GFAST Support Portal">
-    <meta name="author" content="GFAST">
+    <meta name="description" content="Student Information System">
+    <meta name="author" content="Genius Connect">
 
-    <title>GFAST Central</title>
+    <title>Student Information System</title>
 
     <!-- Bootstrap Core CSS -->
     {% assets "css_core" %}
@@ -20,21 +20,20 @@
     {% endassets %}
 
     <!-- customed css -->
-    <link rel="stylesheet" href="/static/css/font-awesome.css" type="text/css"/>
-    <link rel="shortcut icon" href="/static/images/favicon.ico">
-
+    <link rel="stylesheet" href="/static/bootstrap-4.1.3-dist/css/font-awesome.css" type="text/css"/>
+    <link rel="shortcut icon" href="/static/images/access.png">
+    
 </head>
-
-<!-- This "preload" class is a workaround so that the sidebar doesn't load
-     offscreen in IE. It is referenced in the core css, and removed after load
-     in the core js.-->
-<body class="preload">
+ 
+<body>
 
     <!-- Top Nav Bar -->
     {% include "navbar_top.html" %}
        {% block content %}
         {% endblock %}
-   <div id="bg">
+    <div style="padding-left:16px">
+      <h2>Top Navigation Example</h2>
+      <p>Some content..</p>
     </div>
     {% assets "js_core" %}
     <script type="text/javascript" src="{{ ASSET_URL }}" data-turbolinks-track="true"></script>
@@ -42,6 +41,3 @@
 
 </body>
 </html>
-
-
-
