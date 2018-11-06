@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- http://www.codingeverything.com/2014/02/BootstrapDocsSideBar.html -->
+<!-- http://stackoverflow.com/questions/19733447/bootstrap-navbar-with-left-center-and-right-aligned-items -->
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="GFAST Support Portal">
+    <meta name="author" content="GFAST">
+
+    <title>GFAST Central</title>
+
+    <!-- Bootstrap Core CSS -->
+    {% assets "css_core" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css"/>
+    {% endassets %}
+
+    <!-- customed css -->
+    <link rel="stylesheet" href="/static/css/font-awesome.css" type="text/css"/>
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+
+</head>
+
+<!-- This "preload" class is a workaround so that the sidebar doesn't load
+     offscreen in IE. It is referenced in the core css, and removed after load
+     in the core js.-->
+<body class="preload">
+
+    <!-- Top Nav Bar -->
+    {% include "navbar_top.html" %}
+       {% block content %}
+        {% endblock %}
+   <div id="bg">
+    </div>
+    {% assets "js_core" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}" data-turbolinks-track="true"></script>
+    {% endassets %}
+
+</body>
+</html>
+
+
+

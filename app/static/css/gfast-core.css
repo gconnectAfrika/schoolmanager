@@ -1,0 +1,365 @@
+/********** Colour definitions **********
+#0D6941, rgb(13, 105, 65)    Manulife Green (left side of banner)
+#13477B, rgb(19, 71, 123)    John Hancock Blue (right side of banner)
+****************************************/
+
+/* This class is applied to <body> in base.html, and is a workaround so that
+   the sidebar doesn't load offscreen in IE. It is removed from <body> after
+   load in the core js. */
+.preload * {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -ms-transition: none !important;
+    -o-transition: none !important;
+}
+
+body
+{
+    /* This ensures we don't hide content under the fixed navbar */
+    padding-top: 50px;
+    font-family: 'Franklin Gothic', helvetica, arial, sans-serif;
+}
+
+/* format for any general page */
+.page-title {
+    color: #333;
+    font-size: xx-large;
+    margin-bottom: 30px;
+    margin-top: 15px;
+    padding: 2px 0 2px 0;
+    border-style: solid;
+    border-width: 0 0 2px 0;
+    border-color: #333;
+}
+
+/* Handle #-links/navbar conflict */
+:target:before {
+    content:"";
+    display:block;
+    height:50px; /* fixed header height*/
+    margin:-50px 0 0; /* negative fixed header height */
+}
+
+/* topbar */
+.navbar
+{
+    background: linear-gradient(to right, #0D6941, #13477B);
+    min-height: 50px;
+    max-height: 50px;
+    border: 0;
+}
+
+.navbar-search
+{
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.navbar-search-xs
+{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+@media (min-width: 768px)
+{
+    .navbar .form-control-inline
+    {
+        min-width: 250px;
+        max-width: 250px;
+        display: inline;
+    }
+}
+@media (max-width: 767px)
+{
+    .navbar .form-control-inline
+    {
+        min-width: 0;
+        width: calc(100% - 150px);
+        max-width: 250px;
+        display: inline;
+    }
+}
+
+/* A workaround for a stupid problem in Bootstrap 3 */
+/* See for example https://github.com/twbs/bootstrap/issues/15706 */
+/*@media (min-width: 768px) {
+    .navbar-right
+    {
+        padding-right: 15px;
+    }
+}*/
+
+/* Ensure dropdown is not linear-gradient like full navbar */
+/* Also set styles similar to the sidebar */
+@media (max-width: 767px) {
+    .navbar-collapse
+    {
+        background: #333;
+    }
+
+    .navbar-default .navbar-nav li a {
+        color: #ddd;
+    }
+
+    /* hovered links */
+    .navbar-default .navbar-nav li a:hover {
+        background: #666;
+        color: #ddd;
+    }
+
+    /* active links */
+    .navbar-default .navbar-nav li a:active {
+        background: #666;
+        color: #fff;
+    }
+}
+
+.navbar-brand
+{
+    padding-top: 16px;
+    padding-left: 16px;
+}
+
+.navbar-toggle
+{
+    z-index:3;
+}
+
+.navbar-form
+{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+/* ----- link styles ----- */
+@media (min-width: 768px) {
+    .navbar-default .navbar-nav > li > a {
+        color: #fff;
+    }
+    .navbar-default .navbar-nav > li > a:hover,
+    .navbar-default .navbar-nav > li > a:focus {
+        color: #ccc;
+    }
+    .navbar-default .navbar-nav > .active > a,
+    .navbar-default .navbar-nav > .active > a:hover,
+    .navbar-default .navbar-nav > .active > a:focus {
+        color: #ddd;
+        background-color: #eee;
+    }
+    .navbar-default .navbar-nav > .open > a,
+    .navbar-default .navbar-nav > .open > a:hover,
+    .navbar-default .navbar-nav > .open > a:focus {
+        color: #ddd;
+        background-color: #eee;
+    }
+}
+/* ----------------------- */
+#wrap {
+	position: absolute;
+    transition: all 0.4s ease 0s;
+    min-height: 100vh;
+    width: 100%;
+ }
+#side-gfast-band {
+    width: 220px;
+    float: left;
+    height: 100%;
+	position: absolute;
+}
+
+#side-gfast-brand:hover {
+    background: hsla(240,100%,5%,.7) border-box;
+}
+#page-content-wrapper{
+	width: 100%;
+	margin-left: 220px;
+	float: right;
+}
+
+@media (max-width:767px) { 
+    .side-gfast-brand{
+        position:relative;
+        top:110px;
+        width:100%;
+}
+    .page-content-wrapper{
+		margin-left: 100px;
+        position:relative;
+        top:-100px;
+        width:100%;
+}
+}
+@media screen and (max-width: 480px) {
+    .page-content-wrapper{
+		margin-left: 10px;
+		position:relative;
+		width:100%;
+	}
+} 
+/* Wrapper */
+/*--------------------*/
+
+/* ------------------------------------------------------------ */
+/* ------------------------------------------------------------ */
+
+
+
+/*Xbody {
+    margin-top:50px;
+}*/
+
+
+/****************************************/
+/* Have menus overlay the whole screen */
+.overlay {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    background-color: rgb(217, 217, 217, 0.1); /*rgba(0,0,0, 0.9);*/
+    overflow-y: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    background-color: rgb(217, 217, 217);
+    padding: 100px;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 75px;
+    right: 45px;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay {overflow-y: auto;}
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+  
+/* --------- This block is for the login boostrap modal/page --------- */
+/* https://startbootstrap.com/template-overviews/simple-sidebar */
+/* ------------------------------------------------------------ */
+
+/*.modal-login .modal-dialog .modal-content { */
+/*  background-color: rgba(13, 105, 65, 0.80);  */
+/*    backdrop: rgba(13, 105, 65, 0.10); */
+/* }  */
+/* Login From */
+.login-title{
+    color: #13477B;  
+    font-family: 'Open Sans' , sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 5%;
+}
+
+.login-wrap{
+
+    height: 100%;
+    min-height: 100%;
+  /*  position: absolute; */
+    top: 0;
+    left: 0;
+    z-index: 99;
+    margin:  20px;
+
+    position: relative;        
+}
+
+.login-logo{
+    position: relative;
+    top: 50%;
+    transform: translateY(50%);
+}
+p.form-title
+{
+    font-family: 'Open Sans' , sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #13477B;
+    margin-top: 15%;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+form.login input[type="text"], form.login input[type="password"]
+{
+    width: 100%;
+    margin: 0;
+    padding: 5px 10px;
+    background: 0;
+    border: 0;
+    border-bottom: 1px solid #13477B;
+    outline: 0;
+    font-style: italic;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    color: #13477B;
+    outline: 0;
+}
+form.login input[type="submit"]
+{
+    width: 100%;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 16px;
+    outline: 0;
+    cursor: pointer;
+    letter-spacing: 1px;
+    background-color: #13477B;
+    border: #13477B;
+    color: white;
+}
+form.login input[type="submit"]:hover
+{
+    transition: background-color 0.5s ease;
+}
+form.login label, form.login a
+{
+    font-size: 12px;
+    font-weight: 400;
+    color: #0D6941;
+}
+form.login a
+{
+    transition: color 0.5s ease;
+}
+form.login a:hover
+{
+    color: #13477B;
+}

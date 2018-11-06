@@ -1,0 +1,469 @@
+/* BG */
+
+#bg {
+    -moz-transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+    -ms-transform: scale(1.0);
+    transform: scale(1.0);
+    -webkit-backface-visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+}
+
+#bg:before, #bg:after {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	    }
+
+#bg:before {
+    -moz-transition: background-color 2.5s ease-in-out;
+    -webkit-transition: background-color 2.5s ease-in-out;
+    -ms-transition: background-color 2.5s ease-in-out;
+    transition: background-color 2.5s ease-in-out;
+    -moz-transition-delay: 0.75s;
+    -webkit-transition-delay: 0.75s;
+    -ms-transition-delay: 0.75s;
+    transition-delay: 0.75s;
+    background-image: linear-gradient(to top, rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5)), url("/static/images/overlay.png");
+    background-size: auto, 256px 256px;
+    background-position: center, center;
+    background-repeat: no-repeat, repeat;
+    z-index: -2;
+}
+
+#bg:after, backside::before {
+    -moz-transform: scale(1.125);
+    -webkit-transform: scale(1.125);
+    -ms-transform: scale(1.125);
+    transform: scale(1.125);
+    -moz-transition: -moz-transform 0.325s ease-in-out, -moz-filter 0.325s ease-in-out;
+    -webkit-transition: -webkit-transform 0.325s ease-in-out, -webkit-filter 0.325s ease-in-out;
+    -ms-transition: -ms-transform 0.325s ease-in-out, -ms-filter 0.325s ease-in-out;
+    transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out;
+    background-image: url("/static/images/space.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+	
+}
+
+/* Bottom left text */
+.bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+}
+
+/* Top left text */
+.top-left {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+}
+
+/* Top right text */
+.top-right {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+}
+
+/* Bottom right text */
+.bottom-right {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+}
+
+/* Centered text */
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.gfastHome {
+    width: 32%;
+    margin-top: 300px;
+    background-color: rgba(12, 224, 112, 0.1);
+    padding: 10px 15px;
+    font-size: 18px;
+    color: #fff;
+}
+.gfastHome:hover span, .gfastHome:hover:focus h2, .gfastHome:hover:focus span {
+  color:#fff;
+  font:bold;
+  cursor:pointer;
+  opacity: .7
+}
+/* Nav-pills for this Landing Page */
+
+.gfast-nav-pills > li {
+  float: left;
+}
+.gfast-nav-pills > li > a {
+  border-radius: 4px;
+  color: #fff;
+  font-size: 20px;
+}
+.gfast-nav-pills > li.disabled > a {
+  color: #777;
+}
+.gfast-nav-pills > li.disabled > a:hover,
+.gfast-nav-pills > li.disabled > a:focus {
+  color: #777;
+  text-decoration: none;
+  cursor: not-allowed;
+  background-color: transparent;
+}
+.gfast-nav-pills .open > a,
+.gfast-nav-pills .open > a:hover,
+.gfast-nav-pills .open > a:focus {
+  background-color: #eee;
+  border-color: #337ab7;
+}
+
+.gfast-nav-pills > li > a:hover {
+  border-color: #eee #eee #ddd;
+  color:#007b5e;
+  background-color: transparent;
+ }
+.gfast-nav-pills > li + li {
+  margin-left: 2px;
+}
+.gfast-nav-pills > li.active > a,
+.gfast-nav-pills > li.active > a:hover,
+.gfast-nav-pills > li.active > a:focus {
+  color: #007b5e;
+  background-color: transparent;
+}
+.gfast-nav-pills.nav-justified > li > a {
+  margin-bottom: 5px;
+  text-align: center;
+}
+.gfast-nav-pills.nav-justified {
+  width: 100%;
+}
+.gfast-nav-pills.nav-justified > li {
+  float: none;
+}
+.gfast-nav-pills.nav-justified > li > a {
+  margin-bottom: 5px;
+  text-align: center;
+}
+.gfast-nav-pills.nav-justified > .dropdown .dropdown-menu {
+  top: auto;
+  left: auto;
+}
+@media (min-width: 768px) {
+  .gfast-nav-pills.nav-justified > li {
+    display: table-cell;
+    width: 1%;
+  }
+  .gfast-nav-pills.nav-justified > li > a {
+    margin-bottom: 0;
+  }
+}
+/* FontAwesome for working Various Tab windows :> */
+
+#team {
+    background: none;
+    margin-top: 80px;
+}
+
+#team .card {
+    border: #007b5e;
+    background-color: none;
+}
+
+.image-flip:hover .backside,
+.image-flip.hover .backside {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+    border-radius: .25rem;
+
+}
+
+.image-flip:hover .frontside,
+.image-flip.hover .frontside {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.mainflip {
+    -webkit-transition: 1s;
+    -webkit-transform-style: preserve-3d;
+    -ms-transition: 1s;
+    -moz-transition: 1s;
+    -moz-transform: perspective(1000px);
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transition: 1s;
+    transform-style: preserve-3d;
+    position: relative;
+
+}
+.image-flip:hover	.backside img {
+		opacity: .5
+	}
+.frontside {
+    position: relative;
+    -webkit-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    z-index: 2;
+    margin-bottom: 30px;
+}
+
+.backside {
+    /*position: absolute;*/
+	position: absolute;
+    top: 0;
+    left: 0;
+	background: none;
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -o-transform: rotateY(-180deg);
+    -ms-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+	background: hsla(240,100%,5%,.7) border-box;
+	overflow: hidden;
+	border-radius: .3em;
+	/*box-shadow: 0 0 0 1px hsla(0,0%,100%,.3) inset,
+	            0 .5em 1em rgba(0, 0, 0, 0.6);*/
+	/*text-shadow: 0 1px 1px hsla(0,0%,100%,.3);*/
+   /*-webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+    -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+   box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);*/
+}
+/* Adding the blurr*/
+.backside::before {
+	content: '';
+	z-index: -1;
+	-webkit-filter: blur(30px);
+	filter: blur(30px);
+}
+.frontside,
+.backside {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: 1s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transition: 1s;
+    -moz-transform-style: preserve-3d;
+    -o-transition: 1s;
+    -o-transform-style: preserve-3d;
+    -ms-transition: 1s;
+    -ms-transform-style: preserve-3d;
+    transition: 1s;
+    transform-style: preserve-3d;
+}
+
+.frontside .card,
+.backside .card {
+    min-height: 312px;
+}
+.frontside .card a {
+  color: #007b5e !important;
+  font-weight:bold;
+}
+.frontside .card h2 {
+    font-size: 30px;
+}
+.frontside .card span {
+    font-size: 18px;
+    color: #fff;
+	text-align: left;
+}
+.backside .card a {
+  color: #007b5e !important;
+  font-weight:bold;
+}
+.backside .card h2 {
+    font-size: 30px;
+}
+ .backside .card span {
+    font-size: 18px;
+    color: #fff;
+	text-align: left;
+}
+.frontside .card p {
+    font-size: 18px;
+    color: #fff;
+}
+.backside .card p {
+    font-size: 18px;
+    color: #fff;
+}
+.frontside .card .card-title,
+.backside .card .card-title {
+    color: #fff;
+	text-align: center;
+}
+
+/* This transforms the Image from Rectangle to Circle using the Border radius style */
+.frontside .card .card-body img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+	text-align:center;
+}
+
+.frontside .card .card-body2 img {
+    width: 80px;
+    height: 80px;
+	text-align:center;
+}
+/* List */
+
+ol {
+    list-style: decimal;
+    margin: 0 0 1.5rem 0;
+    padding-left: 1.25em;
+}
+
+ol li {
+			padding-left: 0.25em;
+}
+
+.gfast-nav-pills ul {
+    list-style: disc;
+    margin: 0 0 1rem 0;
+    padding-left: 1em;
+}
+
+.gfast-nav-pills ul li {
+			padding-left: 0.5em;
+}
+
+.gfast-nav-pills ul.alt {
+    list-style: none;
+    padding-left: 0;
+}
+
+.gfast-nav-pills ul.alt li {
+    border-top: solid 1px #ffffff;
+    padding: 0.5em 0;
+			}
+
+.gfast-nav-pills ul.alt li:first-child {
+    border-top: 0;
+    padding-top: 0;
+}
+
+.gfast-nav-pills ul.icons {
+    cursor: default;
+    list-style: none;
+    padding-left: 0;
+}
+
+.gfast-nav-pills ul.icons li {
+    display: inline-block;
+    padding: 0 0.75em 0 0;
+}
+
+.gfast-nav-pills ul.icons li:last-child {
+    padding-right: 0;
+}
+
+.gfast-nav-pills ul.icons li a {
+    border-radius: 100%;
+    box-shadow: inset 0 0 0 1px #ffffff;
+    display: inline-block;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    width: 1.5rem;
+}
+
+.gfast-nav-pills ul.icons li a:hover {
+    background-color: rgba(255, 255, 255, 0.075);
+}
+
+.gfast-nav-pills ul.icons li a:active {
+    background-color: rgba(255, 255, 255, 0.175);
+}
+
+.gfast-nav-pills ul.actions {
+    cursor: default;
+    list-style: none;
+    padding-left: 0;
+}
+
+.gfast-nav-pills ul.actions li {
+    display: inline-block;
+    padding: 0 1rem 0 0;
+    vertical-align: middle;
+}
+
+.gfast-nav-pills ul.actions li:last-child {
+    padding-right: 0;
+}
+
+.gfast-nav-pills ul.actions.small li {
+    padding: 0 0.5rem 0 0;
+}
+
+.gfast-nav-pills ul.actions.vertical li {
+    display: block;
+    padding: 1rem 0 0 0;
+}
+
+.gfast-nav-pills ul.actions.vertical li:first-child {
+    padding-top: 0;
+}
+
+.gfast-nav-pills ul.actions.vertical li > * {
+    margin-bottom: 0;
+}
+
+.gfast-nav-pills ul.actions.vertical.small li {
+    padding: 0.5rem 0 0 0;
+}
+
+.gfast-nav-pills ul.actions.vertical.small li:first-child {
+    padding-top: 0;
+}
+
+.gfast-nav-pills ul.actions.fit {
+    display: table;
+    margin-left: -1rem;
+    padding: 0;
+    table-layout: fixed;
+    width: calc(100% + 1rem);
+}
+
+.gfast-nav-pills ul.actions.fit li {
+    display: table-cell;
+    padding: 0 0 0 1rem;
+}
+
+.gfast-nav-pills ul.actions.fit li > * {
+    margin-bottom: 0;
+}
+
+.gfast-nav-pills ul.actions.fit.small {
+    margin-left: -0.5rem;
+    width: calc(100% + 0.5rem);
+}
+
+.gfast-nav-pills ul.actions.fit.small li {
+    padding: 0 0 0 0.5rem;
+
