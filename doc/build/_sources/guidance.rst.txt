@@ -1,0 +1,141 @@
+Running on Pivotal Cloud Foundry
+================================
+* GSD maintains a quick guide to PCF/Git within MFC (including setting sslVerify to false):
+  https://gitlab.manulife.com/DevOpsTechInfo/help-pcf
+  https://gitlab.manulife.com/DevOpsTechInfo/help-git
+  
+Follow the 15 minute guide here:
+* https://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry/deploy-the-sample-app
+
+run the CF installer, in the included zip. This install the commandline tools needed to interact with PCF.
+
+MFC's PCF portal is found here:
+
+* https://login.sys.dev.gsdcf.manulife.com/login
+
+  MFC's login endpoint for PCF has changed recently to
+  https://api.sys.dev.gsdcf.manulife.com
+
+  >>> cf login https://api.sys.cac.preview.pcf.manulife.com
+
+  GFAST development is done in org is 'GSD-CAC-DEV', Space 'GFAST-CAC-DEV'
+
+  The full login command is:
+
+  >>> cf login https://api.sys.cac.preview.pcf.manulife.com -u <lan id> -p <password> -o GSD-CAC-DEV -s GFAST-CAC-DEV
+
+  You can check which ORGS/Spaces you have access to by logging in the Pivotal Application Manager `https://login.sys.cac.preview.pcf.manulife.com/login`
+
+* edit the manifest.yml, changing the name of the application
+  
+* On first run, create the database. Note, we had issues installing pyodbc (requires unixodbc driver),
+  so we switched to the python-conda buildpack instead of the default python (pip-based) one
+  (this hasn't helped either: https://github.com/cloudfoundry/python-buildpack/issues/34)
+
+  cf push manuapps -c "python db_create.py" -b https://github.com/ihuston/python-conda-buildpack.git
+  cf push manuapps -b https://github.com/ihuston/python-conda-buildpack.git
+  
+* To migrate your project into the production PCF area, you need to set up a concourse pipeline. This process is defined here:
+  https://gitlab.manulife.com/geesoffice/onboarding-template
+
+  Once you fill in these templates/forms, then email the GSD engineering team.
+
+
+Connecting to SQL
+-----------------
+https://gitlab.manulife.com/GEES/azure-service-broker/tree/master/azure-sql-db
+
+* List available services::
+
+    cf marketplace
+
+* Create a service instance, I'll leverage azure-sqldb. Copy the template SQL config file, adjust the password::
+    
+    cp CF_sqldb_nonprod_eastus.json.template CF_sqldb_nonprod_eastus.json
+    cf create-service azure-sqldb basic azuresqldb -c CF_sqldb_nonprod_eastus.json
+
+** Note::
+
+  I could not get Python to connect to SQL server when deploying on linux nodes. There were issues compiling pyodbc on linux, Cloud Foundry does not provide the unixodbc driver.
+
+# Bind the service to the app
+
+   cf bind-service manuapps azuresqldb
+   cf restage manuapps
+   
+# you can see the SQL credentials by typing
+
+   cf env manuapps
+
+* use mysql instead::
+
+   cf create-service p-mysql 5GB-dev mysqldb
+   cf bind-service manuapps mysqldb
+
+
+# adjust the database parameters in config.py, use 'cf env manuapps' to find the credentials
+
+   * change USE_SQLITE = False
+   * fill in the server, port, database, uid, pwd, as listed by 'cf env manuapps'
+     >>> cf push manuapps -c "python db_create.py"
+     >>> cf push manuapps
+     
+Other Pivotal tips
+------------------
+* delete a route
+  cf routes
+  cf delete-route apps.dev.gsdcf.manulife.com --hostname X
+
+
+concourse
+---------
+Concourse is Pivotal's continuous integration tool.
+The provisioning pipeline is defined in the 'concourse' subfolder.
+
+Note: Currently missing development branch
+
+* Edit the *concourse-credentials.yml* file in the concourse subfolder.
+  Specifically, change the *private key* (be sure to upload the public key
+  to gitlab), change the *git_uri* to your repository, and adjust *app_name*.
+
+We have created a GFAST deploy key, stored the private key in cyberark
+(as well as the credentials file). See  
+`https://mlisgciscybws1.americas.manulife.net/PasswordVault/logon.aspx?ReturnUrl=%2fPasswordVault%2fdefault.aspx`
+for cyberark login. See `https://gitlab.manulife.com/help/ssh/README`
+for a description of Deploy Keys. You should be able to leverage this key
+across all GFAST web apps. Select Deploy Keys in your project's settings
+and enable the GFASTConcourse key. 
+
+To provision within the DEV foundation, log in and set your target (Note, these
+steps are in the 'concourse/nonprod/updatePipeline.sh' file, but I prefer
+to run these commands explicitly). Logging in should only need to be done once
+(u: admin, p: G$dc0ncourse). 
+
+   fly --target manulife-ci login --concourse-url https://concourse.sys.dev.gsdcf.manulife.com --insecure
+
+Adjust manuapps to your application's name (edit and run updatePipeline.sh, or type the commands directly):
+
+   fly -t manulife-ci set-pipeline -c pipeline.yml -p manuapps-poc-dev-ci --var app_name=manuapps-poc-dev-ci -n -l ../concourse-credentials.yml
+
+   fly -t manulife-ci unpause-pipeline -p manuapps-poc-dev-ci
+  
+You can see your pipeline by surfing to http://concourse.sys.dev.gsdcf.manulife.com.
+For now, log in the "main" team and use the admin credentials listed above.
+
+   
+Get the list of available docker images
+
+curl https://10.234.24.211/v2/_catalog -k
+
+testing on dev:
+edit updatePipeline.sh set
+
+update concourse-credentials.yml
+
+fly targets
+https://concourse.ci/fly-login.html
+fly -t manulife-ci login -c https://concourse.sys.dev.gsdcf.manulife.com
+username: admin
+password: G$dc0ncourse
+
+

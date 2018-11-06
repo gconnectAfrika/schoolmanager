@@ -1,0 +1,354 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Running on Pivotal Cloud Foundry &mdash; GFAST Landing Page 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="ManuApps" href="README.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> GFAST Landing Page
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">ManuApps</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Running on Pivotal Cloud Foundry</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#connecting-to-sql">Connecting to SQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-pivotal-tips">Other Pivotal tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#concourse">concourse</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GFAST Landing Page</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Running on Pivotal Cloud Foundry</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/guidance.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="running-on-pivotal-cloud-foundry">
+<h1>Running on Pivotal Cloud Foundry<a class="headerlink" href="#running-on-pivotal-cloud-foundry" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>GSD maintains a quick guide to PCF/Git within MFC (including setting sslVerify to false):
+<a class="reference external" href="https://gitlab.manulife.com/DevOpsTechInfo/help-pcf">https://gitlab.manulife.com/DevOpsTechInfo/help-pcf</a>
+<a class="reference external" href="https://gitlab.manulife.com/DevOpsTechInfo/help-git">https://gitlab.manulife.com/DevOpsTechInfo/help-git</a></li>
+</ul>
+<p>Follow the 15 minute guide here:
+* <a class="reference external" href="https://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry/deploy-the-sample-app">https://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry/deploy-the-sample-app</a></p>
+<p>run the CF installer, in the included zip. This install the commandline tools needed to interact with PCF.</p>
+<p>MFC’s PCF portal is found here:</p>
+<ul>
+<li><p class="first"><a class="reference external" href="https://login.sys.dev.gsdcf.manulife.com/login">https://login.sys.dev.gsdcf.manulife.com/login</a></p>
+<p>MFC’s login endpoint for PCF has changed recently to
+<a class="reference external" href="https://api.sys.dev.gsdcf.manulife.com">https://api.sys.dev.gsdcf.manulife.com</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cf</span> <span class="n">login</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">sys</span><span class="o">.</span><span class="n">cac</span><span class="o">.</span><span class="n">preview</span><span class="o">.</span><span class="n">pcf</span><span class="o">.</span><span class="n">manulife</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+</div>
+<p>GFAST development is done in org is ‘GSD-CAC-DEV’, Space ‘GFAST-CAC-DEV’</p>
+<p>The full login command is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cf</span> <span class="n">login</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">sys</span><span class="o">.</span><span class="n">cac</span><span class="o">.</span><span class="n">preview</span><span class="o">.</span><span class="n">pcf</span><span class="o">.</span><span class="n">manulife</span><span class="o">.</span><span class="n">com</span> <span class="o">-</span><span class="n">u</span> <span class="o">&lt;</span><span class="n">lan</span> <span class="nb">id</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">password</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">o</span> <span class="n">GSD</span><span class="o">-</span><span class="n">CAC</span><span class="o">-</span><span class="n">DEV</span> <span class="o">-</span><span class="n">s</span> <span class="n">GFAST</span><span class="o">-</span><span class="n">CAC</span><span class="o">-</span><span class="n">DEV</span>
+</pre></div>
+</div>
+<p>You can check which ORGS/Spaces you have access to by logging in the Pivotal Application Manager <cite>https://login.sys.cac.preview.pcf.manulife.com/login</cite></p>
+</li>
+<li><p class="first">edit the manifest.yml, changing the name of the application</p>
+</li>
+<li><p class="first">On first run, create the database. Note, we had issues installing pyodbc (requires unixodbc driver),
+so we switched to the python-conda buildpack instead of the default python (pip-based) one
+(this hasn’t helped either: <a class="reference external" href="https://github.com/cloudfoundry/python-buildpack/issues/34">https://github.com/cloudfoundry/python-buildpack/issues/34</a>)</p>
+<p>cf push manuapps -c “python db_create.py” -b <a class="reference external" href="https://github.com/ihuston/python-conda-buildpack.git">https://github.com/ihuston/python-conda-buildpack.git</a>
+cf push manuapps -b <a class="reference external" href="https://github.com/ihuston/python-conda-buildpack.git">https://github.com/ihuston/python-conda-buildpack.git</a></p>
+</li>
+<li><p class="first">To migrate your project into the production PCF area, you need to set up a concourse pipeline. This process is defined here:
+<a class="reference external" href="https://gitlab.manulife.com/geesoffice/onboarding-template">https://gitlab.manulife.com/geesoffice/onboarding-template</a></p>
+<p>Once you fill in these templates/forms, then email the GSD engineering team.</p>
+</li>
+</ul>
+<div class="section" id="connecting-to-sql">
+<h2>Connecting to SQL<a class="headerlink" href="#connecting-to-sql" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://gitlab.manulife.com/GEES/azure-service-broker/tree/master/azure-sql-db">https://gitlab.manulife.com/GEES/azure-service-broker/tree/master/azure-sql-db</a></p>
+<ul>
+<li><p class="first">List available services:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cf</span> <span class="n">marketplace</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Create a service instance, I’ll leverage azure-sqldb. Copy the template SQL config file, adjust the password:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">CF_sqldb_nonprod_eastus</span><span class="o">.</span><span class="n">json</span><span class="o">.</span><span class="n">template</span> <span class="n">CF_sqldb_nonprod_eastus</span><span class="o">.</span><span class="n">json</span>
+<span class="n">cf</span> <span class="n">create</span><span class="o">-</span><span class="n">service</span> <span class="n">azure</span><span class="o">-</span><span class="n">sqldb</span> <span class="n">basic</span> <span class="n">azuresqldb</span> <span class="o">-</span><span class="n">c</span> <span class="n">CF_sqldb_nonprod_eastus</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>** Note:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">could</span> <span class="ow">not</span> <span class="n">get</span> <span class="n">Python</span> <span class="n">to</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">SQL</span> <span class="n">server</span> <span class="n">when</span> <span class="n">deploying</span> <span class="n">on</span> <span class="n">linux</span> <span class="n">nodes</span><span class="o">.</span> <span class="n">There</span> <span class="n">were</span> <span class="n">issues</span> <span class="n">compiling</span> <span class="n">pyodbc</span> <span class="n">on</span> <span class="n">linux</span><span class="p">,</span> <span class="n">Cloud</span> <span class="n">Foundry</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">provide</span> <span class="n">the</span> <span class="n">unixodbc</span> <span class="n">driver</span><span class="o">.</span>
+</pre></div>
+</div>
+<p># Bind the service to the app</p>
+<blockquote>
+<div>cf bind-service manuapps azuresqldb
+cf restage manuapps</div></blockquote>
+<p># you can see the SQL credentials by typing</p>
+<blockquote>
+<div>cf env manuapps</div></blockquote>
+<ul>
+<li><p class="first">use mysql instead:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cf</span> <span class="n">create</span><span class="o">-</span><span class="n">service</span> <span class="n">p</span><span class="o">-</span><span class="n">mysql</span> <span class="mi">5</span><span class="n">GB</span><span class="o">-</span><span class="n">dev</span> <span class="n">mysqldb</span>
+<span class="n">cf</span> <span class="n">bind</span><span class="o">-</span><span class="n">service</span> <span class="n">manuapps</span> <span class="n">mysqldb</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p># adjust the database parameters in config.py, use ‘cf env manuapps’ to find the credentials</p>
+<blockquote>
+<div><ul class="simple">
+<li>change USE_SQLITE = False</li>
+<li>fill in the server, port, database, uid, pwd, as listed by ‘cf env manuapps’
+&gt;&gt;&gt; cf push manuapps -c “python db_create.py”
+&gt;&gt;&gt; cf push manuapps</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="other-pivotal-tips">
+<h2>Other Pivotal tips<a class="headerlink" href="#other-pivotal-tips" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>delete a route
+cf routes
+cf delete-route apps.dev.gsdcf.manulife.com –hostname X</li>
+</ul>
+</div>
+<div class="section" id="concourse">
+<h2>concourse<a class="headerlink" href="#concourse" title="Permalink to this headline">¶</a></h2>
+<p>Concourse is Pivotal’s continuous integration tool.
+The provisioning pipeline is defined in the ‘concourse’ subfolder.</p>
+<p>Note: Currently missing development branch</p>
+<ul class="simple">
+<li>Edit the <em>concourse-credentials.yml</em> file in the concourse subfolder.
+Specifically, change the <em>private key</em> (be sure to upload the public key
+to gitlab), change the <em>git_uri</em> to your repository, and adjust <em>app_name</em>.</li>
+</ul>
+<p>We have created a GFAST deploy key, stored the private key in cyberark
+(as well as the credentials file). See
+<cite>https://mlisgciscybws1.americas.manulife.net/PasswordVault/logon.aspx?ReturnUrl=%2fPasswordVault%2fdefault.aspx</cite>
+for cyberark login. See <cite>https://gitlab.manulife.com/help/ssh/README</cite>
+for a description of Deploy Keys. You should be able to leverage this key
+across all GFAST web apps. Select Deploy Keys in your project’s settings
+and enable the GFASTConcourse key.</p>
+<p>To provision within the DEV foundation, log in and set your target (Note, these
+steps are in the ‘concourse/nonprod/updatePipeline.sh’ file, but I prefer
+to run these commands explicitly). Logging in should only need to be done once
+(u: admin, p: G$dc0ncourse).</p>
+<blockquote>
+<div>fly –target manulife-ci login –concourse-url <a class="reference external" href="https://concourse.sys.dev.gsdcf.manulife.com">https://concourse.sys.dev.gsdcf.manulife.com</a> –insecure</div></blockquote>
+<p>Adjust manuapps to your application’s name (edit and run updatePipeline.sh, or type the commands directly):</p>
+<blockquote>
+<div><p>fly -t manulife-ci set-pipeline -c pipeline.yml -p manuapps-poc-dev-ci –var app_name=manuapps-poc-dev-ci -n -l ../concourse-credentials.yml</p>
+<p>fly -t manulife-ci unpause-pipeline -p manuapps-poc-dev-ci</p>
+</div></blockquote>
+<p>You can see your pipeline by surfing to <a class="reference external" href="http://concourse.sys.dev.gsdcf.manulife.com">http://concourse.sys.dev.gsdcf.manulife.com</a>.
+For now, log in the “main” team and use the admin credentials listed above.</p>
+<p>Get the list of available docker images</p>
+<p>curl <a class="reference external" href="https://10.234.24.211/v2/_catalog">https://10.234.24.211/v2/_catalog</a> -k</p>
+<p>testing on dev:
+edit updatePipeline.sh set</p>
+<p>update concourse-credentials.yml</p>
+<p>fly targets
+<a class="reference external" href="https://concourse.ci/fly-login.html">https://concourse.ci/fly-login.html</a>
+fly -t manulife-ci login -c <a class="reference external" href="https://concourse.sys.dev.gsdcf.manulife.com">https://concourse.sys.dev.gsdcf.manulife.com</a>
+username: admin
+password: G$dc0ncourse</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="README.html" class="btn btn-neutral" title="ManuApps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, GFAST.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
