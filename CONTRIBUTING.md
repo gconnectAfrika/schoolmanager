@@ -1,7 +1,7 @@
-# Contribute to GFAST web apps
+# Contribute to Gconnect web apps
 
 
-Thank you for your interest in GFAST web apps. 
+Thank you for your interest in Gconnect web apps. 
 The guide below outlines the best way to contribute. 
 
 
